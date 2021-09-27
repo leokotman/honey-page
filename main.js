@@ -1,9 +1,4 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAjdEL22iPOaJAt3SXJcrbxGK69uPdBisE",
   authDomain: "honey-3c248.firebaseapp.com",
@@ -15,40 +10,29 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const commentsRef = app.database().ref("comments");
 
-function createComment() {
+function getFormValue(id) {
+  return document.getElementById(id).value;
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  
   let newComment = {
     id: Math.round(Math.random() * 1000),
-    name: "",
-    email: "",
-    comment: "",
+    name: getFormValue("name"),
+    email: getFormValue("email"),
+    comment: getFormValue("comment"),
   };
-
-  newComment.name = document.getElementById("name");
-  newComment.email = document.getElementById("email");
-  newComment.comment = document.getElementById("comment");
 
   if (!newComment.name || !newComment.email || !newComment.comment) {
     console.log("Не все поля заполнены - нельзя добавить комментарий");
   } else {
-    return newComment;
+    console.log(newComment);
   }
-}
-
-function postComment() {
-  createComment();
-  // app
-  //   .database()
-  //   .ref("comment/" + newComment.id)
-  //   .set({
-  //     id: newComment.id,
-  //     name: newComment.name,
-  //     email: newComment.email,
-  //     comment: newComment.comment,
-  //   });
-  console.log("comment with data was sent!" + newComment);
 }
 
 document
   .getElementById("comments_form")
-  .addEventListener("submit", postComment);
+  .addEventListener("submit", submitForm);
