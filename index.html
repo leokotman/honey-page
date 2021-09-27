@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Honey Hunters</title>
@@ -15,9 +16,10 @@
 
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
     <header id="header">
-      <form class="container" action="" method="POST">
+      <form class="container" id="comments_form" enctype="text/plain">
         <img
           src="./images/logo_big.png"
           alt="honey hunters logo"
@@ -55,7 +57,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <button class="btn btn-primary" type="submit">Записать</button>
+            <button class="btn btn-primary" type="submit" id="btn_submit">Записать</button>
           </div>
         </div>
       </form>
@@ -284,5 +286,6 @@
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
+    <script src="main.js" type="module"></script>
   </body>
 </html>
